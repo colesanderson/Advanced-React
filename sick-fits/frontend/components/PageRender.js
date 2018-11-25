@@ -51,7 +51,7 @@ injectGlobal`
   }
 `;
 
-export class Page extends Component {
+export class PageRender extends Component {
     render() {
         return (
             <ThemeProvider theme={theme}>
@@ -65,4 +65,4 @@ export class Page extends Component {
     }
 }
 
-export default Page;
+export default PageRender;
