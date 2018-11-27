@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Item from './Item';
 
-const ALL_ITEMS_QUERY = gql`
+export const ALL_ITEMS_QUERY = gql`
     query ALL_ITEMS_QUERY {
         items {
             id
@@ -15,6 +15,10 @@ const ALL_ITEMS_QUERY = gql`
             largeImage
         }
     }
+`;
+
+const Center = styled.div`
+    text-align: center;
 `;
 
 const ItemsList = styled.div`
@@ -28,15 +32,11 @@ const ItemsList = styled.div`
 class Items extends Component {
     render() {
         return (
-            <div>
-                <p>Items</p>
-
+            <Center>
                 <Query query={ALL_ITEMS_QUERY}>
                     {({ data, error, loading }) => {
-                        if (loading) return <p>Loading ...</p>;
-
-                        if (error) return <p>Errror: {error.message}</p>;
-
+                        if (loading) return <p>Loading...</p>;
+                        if (error) return <p>Error: {error.message}</p>;
                         return (
                             <ItemsList>
                                 {data.items.map(item => (
@@ -46,7 +46,7 @@ class Items extends Component {
                         );
                     }}
                 </Query>
-            </div>
+            </Center>
         );
     }
 }
